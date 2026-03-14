@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare Design Options</title>
+    
+    <!-- Shared Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Nunito+Sans:wght@400;700&family=Lato:wght@400;700&family=Merriweather:wght@300;400&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* This is the gray background for the page, not the slides */
+        body {
+            background-color: #f0f2f5;
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            padding: 40px;
+            place-items: center;
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* A wrapper for each theme option */
+        .theme-option-wrapper {
+            width: 100%;
+            max-width: 1280px;
+            text-align: left;
+        }
+
+        .theme-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            color: #1a2b4a;
+            border-bottom: 2px solid #d0d8e8;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .theme-description {
+            font-size: 16px;
+            color: #455a64;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* --- SHARED SLIDE STRUCTURE --- */
+        /* This is the base structure for all slide-containers */
+        .slide-container {
+            align-items: center;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+            margin-bottom: 25px; /* Space between the two sample slides */
+            box-sizing: border-box; /* Ensures padding doesn't break layout */
+        }
+
+        .slide-container::before,
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            z-index: 0;
+        }
+
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+        
+        /* Shared utility classes for layouts */
+        .title-layout { text-align: center; width: 100%; }
+        .content-area { align-items: center; display: flex; flex-grow: 1; justify-content: center; width: 100%;}
+        .slide-title { font-size: 40px; margin-bottom: 40px; text-align: left; width: 100%;}
+        .urdu-title { font-size: 50px; margin-top: 10px; font-family: 'Noto Nastaliq Urdu', sans-serif; }
+        
+        /* Tiled Layout */
+        .tiled-content { align-items: stretch; display: flex; gap: 30px; justify-content: center; width: 100%;}
+        .tile { align-items: center; border-radius: 12px; display: flex; flex-direction: column; flex: 1; justify-content: flex-start; padding: 30px; text-align: center;}
+        .tile .icon { font-size: 48px; margin-bottom: 20px;}
+        
+        /* Two Column / Image Layout */
+        .two-column { align-items: flex-start; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: 100%;}
+        .image-wrapper { border-radius: 12px; height: 400px; overflow: hidden; width: 100%;}
+        .image-wrapper img { height: 100%; object-fit: cover; width: 100%;}
+        .two-column .image-wrapper img { object-fit: contain; } /* Use contain for this layout */
+        .two-column ul { list-style: disc; margin: 0; padding-left: 25px;}
+        .two-column li { margin-bottom: 15px; }
+
+        /* Bullet List Layout */
+        .bullet-list { max-width: 900px; width: 100%;}
+        .bullet-list ul { list-style: none; margin: 0; padding: 0;}
+        .bullet-list li { gap: 15px; margin-bottom: 20px; padding-left: 40px; position: relative; }
+        .bullet-list i { font-size: 24px; left: 0; margin-top: 5px; position: absolute; text-align: center; top: 0;}
+        .bullet-list li strong { font-weight: 700; }
+        
+        /* Highlight Numbers Layout */
+        .highlight-numbers-layout > div:first-child { flex: 0 0 40%; text-align: center; }
+        .highlight-numbers-layout .number { font-size: 130px; font-weight: 700; line-height: 1; }
+        .highlight-numbers-layout .urdu-label { font-size: 70px; margin-top: 10px; font-family: 'Noto Nastaliq Urdu', sans-serif; }
+        
+        /* --- 
+           OPTION 1: "Organic Growth" (Green & Beige)
+           Peaceful, soft, and nature-inspired.
+        --- */
+
+        #theme-1 {
+            background-color: #F9F7F3; /* Warm, creamy off-white */
+        }
+        
+        /* Soft, subtle background blobs */
+        #theme-1.slide-container::before {
+            height: 500px;
+            left: -100px;
+            top: -150px;
+            width: 500px;
+            background: radial-gradient(circle, rgba(74, 108, 85, 0.08) 0%, rgba(74, 108, 85, 0) 70%);
+        }
+        #theme-1.slide-container::after {
+            height: 400px;
+            right: -100px;
+            bottom: -150px;
+            width: 400px;
+            background: radial-gradient(circle, rgba(168, 208, 179, 0.1) 0%, rgba(168, 208, 179, 0) 70%);
+        }
+
+        #theme-1 h1, #theme-1 h2, #theme-1 h3, #theme-1 .slide-title {
+            color: #4A6C55; /* Deep Sage Green */
+            font-family: 'Poppins', sans-serif;
+        }
+        #theme-1 p, #theme-1 li, #theme-1 .subtitle {
+            color: #5D5B56; /* Warm Gray */
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        #theme-1 .slide-title { font-weight: 400; }
+        #theme-1 .urdu-title { color: #A8D0B3; /* Light, minty green */ }
+        #theme-1 .supervisor { color: #4A6C55; font-size: 18px; }
+        #theme-1 .presenters { color: #5D5B56; font-size: 20px; margin-top: 30px; }
+        
+        /* Content Slide Styling */
+        #theme-1 .image-wrapper { background-color: #f0f3f1; }
+        #theme-1 .two-column ul { color: #5D5B56; }
+
+        /* --- 
+           OPTION 2: "Calm & Clinical" (Blue & Gray)
+           Trustworthy, clean, and professional.
+        --- */
+
+        #theme-2 {
+            background-color: #FFFFFF; /* Pure White */
+        }
+
+        /* Clean, sharp background shape */
+        #theme-2.slide-container::before {
+            height: 100%;
+            right: 0;
+            top: 0;
+            width: 350px;
+            background-color: #F4F8FB; /* Very light blue */
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        }
+
+        #theme-2 h1, #theme-2 h2, #theme-2 h3, #theme-2 .slide-title {
+            color: #005A9C; /* Deep, trustworthy blue */
+            font-family: 'Poppins', sans-serif;
+        }
+        #theme-2 p, #theme-2 li, #theme-2 .subtitle {
+            color: #333333; /* Dark Gray */
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        #theme-2 .slide-title { font-weight: 700; }
+        #theme-2 .urdu-title { color: #7BC6E2; /* Light, airy blue */ }
+        #theme-2 .supervisor { color: #005A9C; font-size: 18px; }
+        #theme-2 .presenters { color: #333333; font-size: 20px; margin-top: 30px; }
+
+        /* Content Slide Styling */
+        #theme-2 .tile {
+            background-color: #F4F8FB;
+            border: 1px solid #E0EAF3;
+        }
+        #theme-2 .tile .icon { color: #005A9C; }
+        #theme-2 .tile h3 { color: #005A9C; font-size: 24px; }
+
+        /* --- 
+           OPTION 3: "Hopeful & Modern" (Purple & Peach)
+           Uplifting, modern, and optimistic.
+        --- */
+
+        #theme-3 {
+            background-color: #FFFBF8; /* Very light peach */
+        }
+        
+        /* Soft, warm background blobs */
+        #theme-3.slide-container::before {
+            height: 500px;
+            left: -150px;
+            bottom: -150px;
+            width: 500px;
+            background: radial-gradient(circle, rgba(245, 183, 177, 0.15) 0%, rgba(245, 183, 177, 0) 70%);
+        }
+        #theme-3.slide-container::after {
+            height: 400px;
+            right: -100px;
+            top: -100px;
+            width: 400px;
+            background: radial-gradient(circle, rgba(106, 90, 140, 0.1) 0%, rgba(106, 90, 140, 0) 70%);
+        }
+
+        #theme-3 h1, #theme-3 h2, #theme-3 h3, #theme-3 .slide-title {
+            color: #6A5A8C; /* Soft, deep purple */
+            font-family: 'Poppins', sans-serif;
+        }
+        #theme-3 p, #theme-3 li, #theme-3 .subtitle {
+            color: #4A4A4A; /* Dark Gray */
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        #theme-3 .slide-title { font-weight: 400; }
+        #theme-3 .urdu-title { color: #F5B7B1; /* Soft Coral/Peach */ }
+        #theme-3 .supervisor { color: #6A5A8C; font-size: 18px; }
+        #theme-3 .presenters { color: #4A4A4A; font-size: 20px; margin-top: 30px; }
+
+        /* Content Slide Styling */
+        #theme-3 .number { color: #F5B7B1; }
+        #theme-3 .urdu-label { color: #4A4A4A; }
+        #theme-3 .highlight-numbers-layout h3 { color: #6A5A8C; }
+
+        /* --- 
+           OPTION 4: "Focused & Clear" (Soft Dark Mode)
+           Calm, focused, and intimate.
+        --- */
+
+        #theme-4 {
+            background-color: #2C3E50; /* Deep, soft navy/charcoal */
+        }
+
+        /* Glowing, diffused light effects */
+        #theme-4.slide-container::before {
+            height: 600px;
+            left: -150px;
+            top: -150px;
+            width: 600px;
+            background: radial-gradient(circle, rgba(88, 214, 141, 0.1) 0%, rgba(88, 214, 141, 0) 60%);
+            opacity: 0.7;
+        }
+        #theme-4.slide-container::after {
+            height: 500px;
+            right: -100px;
+            bottom: -200px;
+            width: 500px;
+            background: radial-gradient(circle, rgba(88, 214, 141, 0.05) 0%, rgba(88, 214, 141, 0) 60%);
+        }
+        
+        #theme-4 h1, #theme-4 h2, #theme-4 h3, #theme-4 .slide-title {
+            color: #FFFFFF; /* White */
+            font-family: 'Montserrat', sans-serif;
+        }
+        #theme-4 p, #theme-4 li, #theme-4 .subtitle {
+            color: #CED4DE; /* Light gray-blue */
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        #theme-4 .slide-title { font-weight: 700; color: #58D68D; /* Soft, glowing green */ }
+        #theme-4 .urdu-title { color: #58D68D; }
+        #theme-4 .supervisor { color: #CED4DE; font-size: 18px; }
+        #theme-4 .presenters { color: #CED4DE; font-size: 20px; margin-top: 30px; }
+
+        /* Content Slide Styling */
+        #theme-4 .bullet-list i { color: #58D68D; }
+        #theme-4 .bullet-list li strong { color: #FFFFFF; }
+
+    </style>
+</head>
+<body>
+
+    <!-- ======== OPTION 1: "Organic Growth" ======== -->
+    <div class="theme-option-wrapper">
+        <h2 class="theme-title">Option 1: Organic Growth</h2>
+        <p class="theme-description">
+            <b>Feel:</b> Peaceful, soft, and natural.
+            <br>
+            <b>Colors:</b> Uses a palette of sage green, warm beige, and light mint to create a calm, supportive, and "human" feel.
+        </p>
+        
+        <!-- Slide 1: Title_Slide -->
+        <div class="slide-container" id="theme-1">
+            <div class="title-layout">
+                <h1>MindCare</h1>
+                <div class="urdu-title">( ذہنی سکون )</div>
+                <p class="subtitle">Digital Mental Health Assessment Assistant</p>
+                <div class="presenters">
+                    Shahzeb Zia | Aleena Saif | Umama Muskan
+                </div>
+                <div class="supervisor">
+                    Supervisor: Dr. Maryam Mahsal Khan
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 2: Image_Right_Text_Left -->
+        <div class="slide-container" id="theme-1">
+            <h2 class="slide-title">Introduction: What is Mental Health?</h2>
+            <div class="content-area">
+                <div class="two-column">
+                    <div>
+                        <ul>
+                            <li>Refers to an individual's emotional, psychological, and social well-being.</li>
+                            <li>It influences how people think, feel, act, and make decisions.</li>
+                            <li>Crucial for handling stress, maintaining relationships, and working productively.</li>
+                            <li>Early identification of issues helps prevent more severe disorders.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="image-wrapper">
+                            <img src="http://googleusercontent.com/image_collection/image_retrieval/2924837647611346086" alt="Abstract art representing mental well-being">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== OPTION 2: "Calm & Clinical" ======== -->
+    <div class="theme-option-wrapper">
+        <h2 class="theme-title">Option 2: Calm & Clinical</h2>
+        <p class="theme-description">
+            <b>Feel:</b> Trustworthy, clean, and professional.
+            <br>
+            <b>Colors:</b> A classic palette of deep blue, light airy blue, and crisp white. It feels modern, safe, and authoritative.
+        </p>
+
+        <!-- Slide 1: Title_Slide -->
+        <div class="slide-container" id="theme-2">
+            <div class="title-layout">
+                <h1>MindCare</h1>
+                <div class="urdu-title">( ذہنی سکون )</div>
+                <p class="subtitle">Digital Mental Health Assessment Assistant</p>
+                <div class="presenters">
+                    Shahzeb Zia | Aleena Saif | Umama Muskan
+                </div>
+                <div class="supervisor">
+                    Supervisor: Dr. Maryam Mahsal Khan
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 2: Tiled_Text_With_Icons -->
+        <div class="slide-container" id="theme-2">
+            <h2 class="slide-title">The Problem Statement</h2>
+            <div class="content-area">
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-globe"></i></div>
+                        <h3>Global & Local Challenge</h3>
+                        <p>1 in 8 people (970M) worldwide are affected. In Pakistan, studies show 34% of the population faces stress, anxiety, or depression.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-comments-dollar"></i></div>
+                        <h3>Barriers to Care</h3>
+                        <p>Social stigma, limited access to professionals, high cost, and lack of awareness prevent people from seeking help.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-language"></i></div>
+                        <h3>The "App Gap"</h3>
+                        <p>Most high-quality apps are English-only, require paid subscriptions, and lack verified, localized (Urdu) resources.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ======== OPTION 3: "Hopeful & Modern" ======== -->
+    <div class="theme-option-wrapper">
+        <h2 class="theme-title">Option 3: Hopeful & Modern</h2>
+        <p class="theme-description">
+            <b>Feel:</b> Uplifting, modern, and optimistic.
+            <br>
+            <b>Colors:</b> A warm and contemporary palette of soft purple and gentle peach/coral. Feels like a modern wellness app.
+        </p>
+
+        <!-- Slide 1: Title_Slide -->
+        <div class="slide-container" id="theme-3">
+            <div class="title-layout">
+                <h1>MindCare</h1>
+                <div class="urdu-title">( ذہنی سکون )</div>
+                <p class="subtitle">Digital Mental Health Assessment Assistant</p>
+                <div class="presenters">
+                    Shahzeb Zia | Aleena Saif | Umama Muskan
+                </div>
+                <div class="supervisor">
+                    Supervisor: Dr. Maryam Mahsal Khan
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 2: Highlighted_Numbers -->
+        <div class="slide-container" id="theme-3">
+            <h2 class="slide-title">Our Proposed Solution</h2>
+            <div class="content-area">
+                <div class="two-column highlight-numbers-layout" style="align-items: center;">
+                    <div>
+                        <div class="number">MindCare</div>
+                        <div class="urdu-label">( ذہنی سکون )</div>
+                    </div>
+                    <div>
+                        <h3>A Bilingual, AI-Powered Companion</h3>
+                        <p>A voice-enabled mobile app (English & Urdu) that acts as a virtual emotional support assistant.</p>
+                        <p>It provides unified prediction of <strong>stress, anxiety, and depression</strong> and connects users to verified, localized resources.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ======== OPTION 4: "Focused & Clear" ======== -->
+    <div class="theme-option-wrapper">
+        <h2 class="theme-title">Option 4: Focused & Clear (Soft Dark Mode)</h2>
+        <p class="theme-description">
+            <b>Feel:</b> Calm, focused, and intimate.
+            <br>
+            <b>Colors:</b> A soft dark mode using a deep navy/charcoal background with a glowing, hopeful green accent. Very modern and easy to read.
+        </p>
+
+        <!-- Slide 1: Title_Slide -->
+        <div class="slide-container" id="theme-4">
+            <div class="title-layout">
+                <h1>MindCare</h1>
+                <div class="urdu-title">( ذہنی سکون )</div>
+                <p class="subtitle">Digital Mental Health Assessment Assistant</p>
+                <div class="presenters">
+                    Shahzeb Zia | Aleena Saif | Umama Muskan
+                </div>
+                <div class="supervisor">
+                    Supervisor: Dr. Maryam Mahsal Khan
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 2: Styled_Bullet_Points -->
+        <div class="slide-container" id="theme-4">
+            <h2 class="slide-title">Literature Review: Key Research Takeaways</h2>
+            <div class="content-area">
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-robot"></i><strong>Transformer Models (BERT):</strong> Significantly improve the accuracy of detecting mental states from text.</li>
+                        <li><i class="fa-solid fa-file-medical"></i><strong>Labeled Datasets:</strong> Therapist-labeled, local datasets yield much higher real-world reliability than generic social media data.</li>
+                        <li><i class="fa-solid fa-microphone-alt"></i><strong>Multimodal Input:</strong> Combining text and voice data (prosody, tone) can improve detection accuracy.</li>
+                        <li><i class="fa-solid fa-star"></i><strong>Key Takeaway:</strong> Reliable prediction is feasible, but requires modern models fine-tuned on high-quality, therapist-labeled local data.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
