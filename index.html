@@ -759,7 +759,10 @@
     </div>
   </footer>
 
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    emailjs.init('sZa-mMNN-1W3srMZ5');
+
     // Navbar scroll
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true });
@@ -811,14 +814,61 @@
     }), { threshold: 0.2 });
     document.querySelectorAll('.exp-block').forEach(b => bo.observe(b));
 
-    // Form
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-      btn.style.background = 'var(--grn)';
-      setTimeout(() => { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message'; btn.style.background = ''; e.target.reset(); }, 3000);
-    }
-  </script>
+    // Contact Form with EmailJS
+    // Contact Form with EmailJS (dual email)
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const btn = e.target.querySelector('button[type="submit"]');
+  const originalHTML = btn.innerHTML;
+
+  const name = document.getElementById('fn').value.trim();
+  const email = document.getElementById('fe').value.trim();
+  const subject = document.getElementById('fs').value.trim();
+  const message = document.getElementById('fm').value.trim();
+
+  // Loading state
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  btn.disabled = true;
+  btn.style.opacity = '0.8';
+
+  const templateParams = {
+    from_name: name,
+    from_email: email,
+    subject: subject,
+    message: message
+  };
+
+  // Fire both emails simultaneously
+  Promise.all([
+    emailjs.send('service_icjksqn', 'template_pk65bdn', templateParams),  // to you
+    emailjs.send('service_icjksqn', 'template_niq021j', templateParams)   // auto-reply to sender
+  ])
+  .then(() => {
+    btn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent!';
+    btn.style.background = 'var(--grn)';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    e.target.reset();
+
+    setTimeout(() => {
+      btn.innerHTML = originalHTML;
+      btn.style.background = '';
+    }, 4000);
+  })
+  .catch((error) => {
+    console.error('EmailJS error:', error);
+    btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed — Try Again';
+    btn.style.background = '#dc2626';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+
+    setTimeout(() => {
+      btn.innerHTML = originalHTML;
+      btn.style.background = '';
+    }, 4000);
+  });
+}
+</script>
 </body>
 </html>
